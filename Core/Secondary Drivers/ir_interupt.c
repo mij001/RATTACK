@@ -1,4 +1,4 @@
-#include "ir_sec_derver.h"
+#include "ir_interupt.h"
 
 void ir_read()
 {
@@ -44,21 +44,21 @@ void IR_calc_sensor_values(int sensor)
     {
         IR_led_on(RIGHT_FORWARD);
         ADC_IR_DMA_read_to_buffer();
-        GL_IR_readings.right_forward = MAX_LIM_0(IR_DMA_read_buffer[RIGHT_FORWARD] - GL_IR_readings.right_forward, IR_MAX);
+        GL_IR_readings.right_forward = MAX_0LIM16(IR_DMA_read_buffer[RIGHT_FORWARD] - GL_IR_readings.right_forward, IR_MAX);
         break;
     }
     case RIGHT_ANGLED45:
     {
         IR_led_on(RIGHT_ANGLED45);
         ADC_IR_DMA_read_to_buffer();
-        GL_IR_readings.right_angled45 = MAX_LIM_0(IR_DMA_read_buffer[RIGHT_ANGLED45] - GL_IR_readings.right_angled45, IR_MAX);
+        GL_IR_readings.right_angled45 = MAX_0LIM16(IR_DMA_read_buffer[RIGHT_ANGLED45] - GL_IR_readings.right_angled45, IR_MAX);
         break;
     }
     case RIGHT_SIDES:
     {
         IR_led_on(RIGHT_SIDES);
         ADC_IR_DMA_read_to_buffer();
-        GL_IR_readings.right_sides = MAX_LIM_0(IR_DMA_read_buffer[RIGHT_SIDES] - GL_IR_readings.right_sides, IR_MAX);
+        GL_IR_readings.right_sides = MAX_0LIM16(IR_DMA_read_buffer[RIGHT_SIDES] - GL_IR_readings.right_sides, IR_MAX);
         break;
     }
     default:

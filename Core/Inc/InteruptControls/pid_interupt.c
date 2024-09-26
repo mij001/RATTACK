@@ -54,21 +54,20 @@ void pid_speed_control()
         pid_calc_values.current_error[i] = GL_motor_pwm_target[i] - get_encoder_val(i);
 
         pid_calc_values.cmltv_error[i] += pid_calc_values.current_error[i];
-        uint32_t cmltv_error_corrected = pid_calc_values.cmltv_error[i] * (pid_calc_values.current_error[i] < 100);
+        float cmltv_error_corrected = pid_calc_values.cmltv_error[i] * (pid_calc_values.current_error[i] < 100);
 
-        uint32_t derrivitive_error = (pid_calc_values.current_error[i] - 2 * pid_calc_values.prev_error_t_minus_1[i] + pid_calc_values.prev_error_t_minus_2[i]);
-        uint32_t derrivitive_error_corrected = derrivitive_error * (pid_calc_values.current_error[i] < 100);
+        float derrivitive_error = (pid_calc_values.current_error[i] - 2 * pid_calc_values.prev_error_t_minus_1[i] + pid_calc_values.prev_error_t_minus_2[i]);
+        float derrivitive_error_corrected = derrivitive_error * (pid_calc_values.current_error[i] < 100);
 
         // pid value calculation
         GL_motor_pwm[i] = pid_consts.kp * pid_calc_values.current_error[i] +
                           pid_consts.ki * cmltv_error_corrected +
                           pid_consts.kd * derrivitive_error_corrected;
 
-        GL_motor_pwm[i] = MAX_LIM(GL_motor_pwm[i], MOTOR_OUTPUT_MAX);
-        GL_motor_pwm[i] = MIN_LIM(GL_motor_pwm[i], -MOTOR_OUTPUT_MAX);
+        GL_motor_pwm[i] = MAX_LIM32(GL_motor_pwm[i], MOTOR_OUTPUT_MAX);
+        GL_motor_pwm[i] = MIN_LIM32(GL_motor_pwm[i], -MOTOR_OUTPUT_MAX);
 
 #if OSC_SUPPRESSON_ENABLE
-
         // if previous speed not 0 and now its is start occilation detection
         if (prev_motor_pwm[i] != 0 && GL_motor_pwm_target[i] == 0)
         {
@@ -83,4 +82,13 @@ void pid_speed_control()
         }
 #endif
     }
+        set_motor_pwm(GL_motor_pwm[0], GL_motor_pwm[0]);
+}
+
+
+// target spwm
+void set_target_pwm(int16_t left_speed, int16_t right_speed)
+{
+	GL_motor_pwm_target[0] = left_speed;
+	GL_motor_pwm_target[1] = right_speed;
 }

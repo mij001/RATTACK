@@ -22,3 +22,6 @@ typedef struct
 } Pid_Consts_t;
 
 void update_encoder_and_pid_speed_control(void);
+void set_target_pwm(int16_t left_speed, int16_t right_speed);
+void pid_speed_control();
+

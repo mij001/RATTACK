@@ -1,8 +1,15 @@
+#pragma once
+
 #include <stdint.h>
+#include "config.h"
 
 #define LEFT 0
 #define RIGHT 1
 #define L_AND_R 2
+
+#define LEFT_BIT_POSITION 2
+#define FWD_BIT_POSITION 1
+#define RIGHT_BIT_POSITION 0
 
 uint32_t GL_motor_pwm[L_AND_R] = {0};
 uint32_t GL_motor_pwm_target[L_AND_R] = {0};
@@ -38,6 +45,22 @@ enum IR_Sensor
     RIGHT_FORWARD,
     RIGHT_ANGLED45,
     RIGHT_SIDES,
-    
+
     NONE,
+};
+
+typedef struct
+{
+    uint32_t left_speed;
+    uint32_t right_speed;
+} Speed;
+
+Speed GL_searching_speed = {
+    .left_speed = SEARCHING_SPEED,
+    .left_speed = SEARCHING_SPEED,
+};
+
+Speed GL_fast_speed = {
+    .left_speed = FAST_SPEED,
+    .left_speed = FAST_SPEED,
 };

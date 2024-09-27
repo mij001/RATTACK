@@ -1,3 +1,5 @@
+#pragma once
+
 #include "helper.h"
 
 void delay_us(int time_us)

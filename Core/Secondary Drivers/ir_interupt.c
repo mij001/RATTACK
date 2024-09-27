@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ir_interupt.h"
 
 void ir_read()

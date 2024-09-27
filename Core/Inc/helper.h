@@ -1,3 +1,4 @@
+#pragma once
 #include <stdint.h>
 
 #include "global_vars.h"
@@ -10,7 +11,7 @@ inline uint16_t MAX_LIM16(uint16_t var, uint16_t max)
 {
     return var > max ? max : var;
 }
-inline float MAX_LIM32(float var, float max)
+inline float MAX_LIM_F(float var, float max)
 {
     return var > max ? max : var;
 }
@@ -23,7 +24,7 @@ inline uint16_t MAX_0LIM16(uint16_t var, uint16_t max)
 {
     return var > max ? 0 : var;
 }
-inline float MAX_0LIM32(float var, float max)
+inline float MAX_0LIM_F(float var, float max)
 {
     return var > max ? 0 : var;
 }
@@ -36,7 +37,7 @@ inline uint16_t MIN_LIM16(uint16_t var, uint16_t min)
 {
     return var < min ? min : var;
 }
-inline float MIN_LIM32(float var, float min)
+inline float MIN_LIM_F(float var, float min)
 {
     return var < min ? min : var;
 }

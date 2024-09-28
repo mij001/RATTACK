@@ -64,3 +64,6 @@ Speed GL_fast_speed = {
     .left_speed = FAST_SPEED,
     .left_speed = FAST_SPEED,
 };
+
+uint32_t GL_accumilated_encoder_values[L_AND_R]={0};
+uint32_t n_cells_to_go=0;

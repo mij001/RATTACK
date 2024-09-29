@@ -104,6 +104,8 @@ void fast_speed_linear_motion_pid(void)
     fast_speed_corrected.left_speed += ir_difference * fast_speed_ir_kp;
     fast_speed_corrected.right_speed -= ir_difference * fast_speed_ir_kp;
 
+// FIXME: need to define fast_speed_ir_kp
+// FIXME: need to add dynamin scaling of fast_speed_ir_kp in oder to make it harder to wiggle at higher speeds
 #endif
 
     set_motor_pwm(fast_speed_corrected.left_speed, fast_speed_corrected.right_speed);

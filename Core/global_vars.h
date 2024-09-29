@@ -51,8 +51,8 @@ enum IR_Sensor
 
 typedef struct
 {
-    uint32_t left_speed;
-    uint32_t right_speed;
+    float left_speed;
+    float right_speed;
 } Speed;
 
 Speed GL_searching_speed = {
@@ -65,5 +65,17 @@ Speed GL_fast_speed = {
     .left_speed = FAST_SPEED,
 };
 
-uint32_t GL_accumilated_encoder_values[L_AND_R]={0};
-uint32_t n_cells_to_go=0;
+uint32_t GL_accumilated_encoder_values[L_AND_R] = {0};
+uint32_t n_cells_to_go = 0;
+
+#define POS90 ROTATE_90_IN_PLACE_ENCODER_INCREMENTS
+#define NEG90 -ROTATE_90_IN_PLACE_ENCODER_INCREMENTS
+#define POS180 ROTATE_180_IN_PLACE_ENCODER_INCREMENTS
+#define NEG180 -ROTATE_180_IN_PLACE_ENCODER_INCREMENTS
+
+uint8_t GL_rotation_done = 1;
+
+enum motion
+{
+    M_STOP
+};

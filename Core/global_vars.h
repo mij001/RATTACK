@@ -77,5 +77,37 @@ uint8_t GL_rotation_done = 1;
 
 enum motion
 {
-    M_STOP
+    M_STOP,
+    M_SLOW_LINEAR,
+    M_SLOW_LINEAR,
+    M_FAST_LINEAR,
+    M_SLOW_ROTATIONAL,
+    M_FAST_ROTATIONAL,
+    M_WAIT_FOR_INPUT,
 };
+
+uint16_t GL_current_motion = M_WAIT_FOR_INPUT;
+
+typedef struct
+{
+    int16_t x;
+    int16_t y;
+    int16_t angle;
+} Position;
+
+Position GL_mouse_position = {0}; /* at (0,0) facing +x direction. cw (+)ve, counter-cw (-)ve */
+
+#define LR_SIDES 0
+#define FRONT_SIDE 1
+#define LFR_SIDES 2
+
+/* cell is 0b[0-0-0-<recorded> <270_available>-<180_available>-<90_available>-<0_available>]*/
+uint8_t GL_map[NUM_OF_CELLS_WIDTH][NUM_OF_CELLS_WIDTH] = {0};
+uint16_t GL_map_lock = 0;
+
+uint8_t GL_current_cell_mobility = 0;
+
+#define LEFT_MOBILE_MASK 0b00000100
+#define RIGHT_MOBILE_MASK 0b00000010
+#define FORWARD_MOBILE_MASK 0b00000001
+#define CELL_ACCESSED_MASK 0b00010000

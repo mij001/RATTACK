@@ -12,24 +12,11 @@ void delay_us(int time_us)
             ;
     }
 }
-
 void delay_ms(uint32_t time_ms)
 {
     uint32_t last_tick = get_tick();
     while ((get_tick() - last_tick) < time_ms)
         ;
-}
-
-uint32_t get_encoder_val(uint32_t i)
-{
-    if (i)
-    {
-        return GL_encoder_values.left_enc;
-    }
-    else
-    {
-        return GL_encoder_values.right_enc;
-    }
 }
 
 // max
@@ -110,4 +97,71 @@ inline float LIMIT_F(float var, float min, float max)
         return max;
     }
     return var;
+}
+
+inline int16_t xcos(int16_t angle)
+{
+    switch (angle)
+    {
+    case 0:
+        return 1;
+    case 90:
+        return 0;
+    case 180:
+        return -1;
+    case 270:
+        return 0;
+    }
+}
+inline int16_t ysin(int16_t angle)
+{
+    switch (angle)
+    {
+    case 0:
+        return 0;
+    case 90:
+        return 1;
+    case 180:
+        return 0;
+    case 270:
+        return -1;
+    }
+}
+
+inline uint16_t angle_add(uint16_t a1, uint16_t a2)
+{
+    a1 = +a2;
+    if (a1 >= 0)
+    {
+        return a1 % 360;
+    }
+    else
+    {
+        return -((-a1) % 360);
+    }
+}
+
+// getters and setters are used in order to stop errorneous mistakes
+inline Position get_position()
+{
+    return GL_mouse_position;
+}
+inline uint8_t read_map_cell(uint8_t x, uint8_t y)
+{
+    return GL_map[x][y];
+}
+inline void write_map_cell(uint8_t x, uint8_t y, uint8_t cell)
+{
+    GL_map[x][y] = cell;
+}
+inline uint32_t get_encoder_val(uint32_t i)
+{
+    if (i)
+    {
+        return GL_encoder_values.left_enc;
+    }
+    else
+    {
+        return GL_encoder_values.right_enc;
+    }
 }

@@ -224,7 +224,8 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, IND_LED_1_Pin|IND_LED_2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, IR_1_LED_Pin|IR_2_LED_Pin|IR_3_LED_Pin|IR_4_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, H_BRIDGE_A2_Pin|IR_1_LED_Pin|IR_2_LED_Pin|IR_3_LED_Pin
+                          |IR_4_LED_Pin|H_BRIDGE_B2_Pin|H_BRIDGE_B1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, IR_5_LED_Pin|IR_6_LED_Pin|CTRL_BTN_Pin, GPIO_PIN_RESET);
@@ -236,14 +237,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : DRV_8833_FAULT_Pin */
-  GPIO_InitStruct.Pin = DRV_8833_FAULT_Pin;
+  /*Configure GPIO pin : H_BRIDGE_A1_Pin */
+  GPIO_InitStruct.Pin = H_BRIDGE_A1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(DRV_8833_FAULT_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(H_BRIDGE_A1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : IR_1_LED_Pin IR_2_LED_Pin IR_3_LED_Pin IR_4_LED_Pin */
-  GPIO_InitStruct.Pin = IR_1_LED_Pin|IR_2_LED_Pin|IR_3_LED_Pin|IR_4_LED_Pin;
+  /*Configure GPIO pins : H_BRIDGE_A2_Pin IR_1_LED_Pin IR_2_LED_Pin IR_3_LED_Pin
+                           IR_4_LED_Pin H_BRIDGE_B2_Pin H_BRIDGE_B1_Pin */
+  GPIO_InitStruct.Pin = H_BRIDGE_A2_Pin|IR_1_LED_Pin|IR_2_LED_Pin|IR_3_LED_Pin
+                          |IR_4_LED_Pin|H_BRIDGE_B2_Pin|H_BRIDGE_B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -261,14 +264,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MPU_6050_INT_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : DRV_8833_MOTOR_1_IN_1_Pin DRV_8833_MOTOR_1_IN_2_Pin */
-  GPIO_InitStruct.Pin = DRV_8833_MOTOR_1_IN_1_Pin|DRV_8833_MOTOR_1_IN_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF2_TIM3;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : DRV_8833_MOTOR_2_IN_1_Pin DRV_8833_MOTOR_2_IN_2_Pin */
   GPIO_InitStruct.Pin = DRV_8833_MOTOR_2_IN_1_Pin|DRV_8833_MOTOR_2_IN_2_Pin;

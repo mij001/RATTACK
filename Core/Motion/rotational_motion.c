@@ -84,7 +84,7 @@ void fast_speed_rotational_motion_pid(int32_t angle)
     };
 
     /*
-        multiplied with the turn radui ratio in order to make the increments porpotional to radi
+        multiplied with the turn radi ratio in order to make the increments porpotional to radi
         otherwise they would never reach desired value atathe same time
     */
     if (angle == 90)

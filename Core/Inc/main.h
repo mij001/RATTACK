@@ -81,8 +81,10 @@ void Error_Handler(void);
 #define MOTOR_2_EN_C1_GPIO_Port GPIOB
 #define MOTOR_2_EN_C2_Pin GPIO_PIN_1
 #define MOTOR_2_EN_C2_GPIO_Port GPIOB
-#define DRV_8833_FAULT_Pin GPIO_PIN_2
-#define DRV_8833_FAULT_GPIO_Port GPIOB
+#define H_BRIDGE_A1_Pin GPIO_PIN_2
+#define H_BRIDGE_A1_GPIO_Port GPIOB
+#define H_BRIDGE_A2_Pin GPIO_PIN_10
+#define H_BRIDGE_A2_GPIO_Port GPIOB
 #define IR_1_LED_Pin GPIO_PIN_12
 #define IR_1_LED_GPIO_Port GPIOB
 #define IR_2_LED_Pin GPIO_PIN_13
@@ -99,10 +101,10 @@ void Error_Handler(void);
 #define MPU_6050_INT_GPIO_Port GPIOA
 #define CTRL_BTN_Pin GPIO_PIN_15
 #define CTRL_BTN_GPIO_Port GPIOA
-#define DRV_8833_MOTOR_1_IN_1_Pin GPIO_PIN_4
-#define DRV_8833_MOTOR_1_IN_1_GPIO_Port GPIOB
-#define DRV_8833_MOTOR_1_IN_2_Pin GPIO_PIN_5
-#define DRV_8833_MOTOR_1_IN_2_GPIO_Port GPIOB
+#define H_BRIDGE_B2_Pin GPIO_PIN_4
+#define H_BRIDGE_B2_GPIO_Port GPIOB
+#define H_BRIDGE_B1_Pin GPIO_PIN_5
+#define H_BRIDGE_B1_GPIO_Port GPIOB
 #define DRV_8833_MOTOR_2_IN_1_Pin GPIO_PIN_6
 #define DRV_8833_MOTOR_2_IN_1_GPIO_Port GPIOB
 #define DRV_8833_MOTOR_2_IN_2_Pin GPIO_PIN_7

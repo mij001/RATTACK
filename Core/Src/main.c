@@ -19,9 +19,18 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_device.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdint.h>
+#include "config.h"
+#include "global_vars.h"
+#include "helper.h"
+#include "ir_secondary.h"
+#include "pid_interupt.h"
+#include "map_update_interrupt.h"
+#include "rotational_motion.h"
+#include "linear_motion.h"
+#include "ir_interupt.h"
 
 /* USER CODE END Includes */
 

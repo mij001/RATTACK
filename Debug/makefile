@@ -16,6 +16,11 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/Secondary\ Drivers/subdir.mk
+-include Core/Motion/subdir.mk
+-include Core/Map\ Maker/subdir.mk
+-include Core/Inc/InteruptControls/subdir.mk
+-include Core/Inc/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -64,8 +69,8 @@ all: main-build
 main-build: mm.elf secondary-outputs
 
 # Tool invocations
-mm.elf mm.map: $(OBJS) $(USER_OBJS) D:\mm\mm\mm\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "mm.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\mm\mm\mm\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mm.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+mm.elf mm.map: $(OBJS) $(USER_OBJS) D:\mm\RATTACK\v1.0\cubemx\ project\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "mm.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\mm\RATTACK\v1.0\cubemx project\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mm.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

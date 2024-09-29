@@ -22,6 +22,11 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Inc/InteruptControls \
+Core/Inc \
+Core/Map\ Maker \
+Core/Motion \
+Core/Secondary\ Drivers \
 Core/Src \
 Core/Startup \
 Drivers/STM32F4xx_HAL_Driver/Src \
